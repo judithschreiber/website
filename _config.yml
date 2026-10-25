@@ -1,0 +1,14 @@
+title: Judith Schreiber's Gallery
+baseurl: ""
+url: ""
+markdown: kramdown
+exclude:
+  - content
+  - tools
+  - "*.php"
+  - "*.ini"
+  - "*.csv"
+  - error_log
+  - tree.jpg
+  - __pycache__
+  - judithschreiber.tar.gz

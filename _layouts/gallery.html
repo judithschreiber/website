@@ -1,0 +1,21 @@
+---
+layout: default
+---
+{% assign gallery = site.data.gallery.galleries | where: 'slug', page.gallery | first %}
+<h2>{{ gallery.name | escape }}</h2>
+<h4>{% if gallery.artist %} by {{ gallery.artist | escape }}{% endif %}</h4>
+<div id="sgMain-nav">
+  {% if gallery.previous %}<a href="{{ '/galleries/' | append: gallery.previous | append: '/' | relative_url }}">Previous</a> | {% endif %}
+  <a href="{{ '/' | relative_url }}">Up</a>
+  {% if gallery.next %} | <a href="{{ '/galleries/' | append: gallery.next | append: '/' | relative_url }}">Next</a>{% endif %}
+</div>
+<div id="sgContent">
+  <p class="sgTab"><a href="{{ '/' | relative_url }}">Gallery</a></p>
+  <div class="sgAlbum">
+    {% for image in gallery.images %}
+      <a href="{{ '/galleries/' | append: gallery.slug | append: '/images/' | append: image.slug | append: '/' | relative_url }}"><img src="{{ image.thumb100 | relative_url }}" class="sgThumbnailAlbum" alt="{{ image.name | escape }}"></a>
+    {% endfor %}
+    <div class="sgFoot"></div>
+  </div>
+  {% include details.html item=gallery %}
+</div>

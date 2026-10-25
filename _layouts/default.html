@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% assign document_title = site.title %}
+  {% if page.gallery %}{% assign title_gallery = site.data.gallery.galleries | where: 'slug', page.gallery | first %}{% assign document_title = title_gallery.name %}{% endif %}
+  {% if page.image %}{% assign title_image = title_gallery.images | where: 'slug', page.image | first %}{% assign document_title = title_image.name %}{% endif %}
+  <title>{{ document_title | escape }} - {{ site.title | escape }}</title>
+  <link rel="stylesheet" href="{{ '/assets/css/layout.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/color_bob.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/site.css' | relative_url }}">
+</head>
+<body>
+  <div id="sgContainer">
+    <div id="sgHeader">
+      <div class="sgCrumb">
+        <a href="{{ '/' | relative_url }}">Gallery</a>{% if page.gallery %}{% assign crumb_gallery = site.data.gallery.galleries | where: 'slug', page.gallery | first %} &gt; <a href="{{ '/galleries/' | append: page.gallery | append: '/' | relative_url }}">{{ crumb_gallery.name | escape }}</a>{% endif %}{% if page.image %}{% assign crumb_image = crumb_gallery.images | where: 'slug', page.image | first %} &gt; {{ crumb_image.name | escape }}{% endif %}
+      </div>
+    </div>
+    {{ content }}
+    <div id="sgFooter"><p>{{ site.title }}</p></div>
+  </div>
+</body>
+</html>

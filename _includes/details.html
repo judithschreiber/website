@@ -1,0 +1,16 @@
+{% assign item = include.item %}
+{% if item.date or item.location or item.description or item.camera or item.lens or item.film or item.darkroom or item.digital or item.copyright or item.artist %}
+<div class="sgDetailsList">
+  <dl>
+    {% if item.date %}<dt>Date:</dt><dd>{{ item.date | escape }}</dd>{% endif %}
+    {% if item.location %}<dt>Location:</dt><dd>{{ item.location | escape }}</dd>{% endif %}
+    {% if item.description %}<dt>Description:</dt><dd>{{ item.description | escape }}</dd>{% endif %}
+    {% if item.camera %}<dt>Camera:</dt><dd>{{ item.camera | escape }}</dd>{% endif %}
+    {% if item.lens %}<dt>Lens:</dt><dd>{{ item.lens | escape }}</dd>{% endif %}
+    {% if item.film %}<dt>Film:</dt><dd>{{ item.film | escape }}</dd>{% endif %}
+    {% if item.darkroom %}<dt>Darkroom manipulation:</dt><dd>{{ item.darkroom | escape }}</dd>{% endif %}
+    {% if item.digital %}<dt>Digital manipulation:</dt><dd>{{ item.digital | escape }}</dd>{% endif %}
+    {% if item.copyright %}<dt>Copyright:</dt><dd>{{ item.copyright | escape }}</dd>{% elsif item.artist %}<dt>Copyright:</dt><dd>{{ item.artist | escape }}</dd>{% endif %}
+  </dl>
+</div>
+{% endif %}

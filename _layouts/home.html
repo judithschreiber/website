@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<h2>{{ site.data.gallery.name }}</h2>
+<h4></h4>
+<div id="sgContent">
+  <p class="sgTab">{{ site.data.gallery.galleries.size }} galleries</p>
+  {% for gallery in site.data.gallery.galleries %}
+    {% assign thumbnail = gallery.thumbnail %}
+    <div class="sgGallery sgGalleryFloat">
+      {% if thumbnail %}
+        <a href="{{ '/galleries/' | append: gallery.slug | append: '/' | relative_url }}"><img src="{{ thumbnail.thumb80 | relative_url }}" class="sgThumbGallery" alt="{{ gallery.name | escape }}"></a>
+      {% endif %}
+      <h3 title="View Gallery"><a href="{{ '/galleries/' | append: gallery.slug | append: '/' | relative_url }}">{{ gallery.name | escape }}</a></h3>
+      <p>{{ gallery.summary | default: gallery.description | escape }}</p>
+      <p class="sgCount">{{ gallery.images.size }} images</p>
+      <div class="sgFoot"></div>
+    </div>
+  {% endfor %}
+  <div class="clear"></div>
+</div>

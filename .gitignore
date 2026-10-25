@@ -1,0 +1,28 @@
+# Jekyll
+_site/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+
+# Ruby dependencies
+.bundle/
+vendor/bundle/
+
+# Python tooling
+__pycache__/
+*.py[cod]
+
+# Local environment and editor files
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/
+
+# OS-generated files
+.DS_Store
+._*
+
+# Logs
+*.log
+error_log
